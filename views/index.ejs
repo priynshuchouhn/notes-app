@@ -1,0 +1,53 @@
+
+    <%- include('header.ejs') %>
+    <div class="container-fluid d-flex justify-content-center">
+      <div class="col-4 mt-5" id="notes-container">
+        <div class="card">
+          <div class="card-header">
+            <h2>Notes</h2>
+          </div>
+          <div class="card-body">
+            <% let i = 0 %>
+            <% if (locals.notes) { %>
+                <% for (let note of locals.notes) { %>
+                  <div class="list_item my-2 py-2 d-flex align-items-center">
+                    <div class="squaredTwo">
+                      <input type="checkbox" class="checkbox" id="squaredTwo<%=  i %>" name="check" />
+                      <label for="squaredTwo<%= i %>"></label>
+                    </div>
+                    <label for="" class="ms-2"> <%= note.note %> </label>
+                  </div>
+                  <% i = 1+i %>
+                <% } %> 
+              <% } %>              
+          </div>
+          <form action="/" method="post">
+            <div class="card-footer d-flex justify-content-between">
+              <input
+                type="text"
+                class="w-100"
+                name="notes"
+                id="notes"
+                placeholder="Add your notes"
+              />
+              <button type="submit">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  fill="#424874"
+                  class="bi bi-plus"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <%- include('footer.ejs') %>
+  
