@@ -8,12 +8,12 @@ const port = 3000;
 
 app.use(express.static("public"));
 app.use(express.urlencoded({extended:true}));
-mongoose.connect('mongodb://127.0.0.1:27017/notesDb', {useNewUrlParser: true});
+mongoose.connect('mongodb+srv://priynshuchouhn:notesapp24@notesapp.i8xfiwc.mongodb.net/notesDb', {useNewUrlParser: true});
 const NoteSchema = new mongoose.Schema({ note: String });
 
 const Note = mongoose.model("note", NoteSchema);
 
-// let notes = [];
+
 
 
 app.get("/" , async(req,res)=>{
@@ -24,10 +24,7 @@ app.get("/" , async(req,res)=>{
     });
 })
 app.post("/" ,(req,res)=>{
-    // const note = new Note({
-    //     note: req.body['notes']
-    // });
-    // note.save();
+
     const notes = Note.find();
     console.log(notes);
     res.render("index.ejs",{
