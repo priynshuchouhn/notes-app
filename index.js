@@ -13,9 +13,6 @@ const NoteSchema = new mongoose.Schema({ note: String });
 
 const Note = mongoose.model("note", NoteSchema);
 
-
-
-
 app.get("/" , async(req,res)=>{
     let notes = await Note.find({});
     console.log(notes);
