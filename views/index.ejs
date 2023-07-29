@@ -4,21 +4,22 @@
       <div class="col-md-4 mt-5" id="notes-container">
         <div class="card">
           <div class="card-header">
-            <h2>Notes</h2>
+            <h2>ToDos</h2>
           </div>
           <div class="card-body">
             <% let i = 0 %>
             <% if (locals.notes) { %>
-                <% for (let note of locals.notes) { %>
+                <% notes.forEach(note => { %>
+                  <form action="/delete" method="post">
                   <div class="list_item my-2 py-2 d-flex align-items-center">
-                    <div class="squaredTwo">
-                      <input type="checkbox" class="checkbox" id="squaredTwo<%=  i %>" name="check" />
-                      <label for="squaredTwo<%= i %>"></label>
+                      <div class="squaredTwo">
+                        <input type="checkbox" class="checkbox" id="squaredTwo_<%= note._id %>" name="checkbox" value="<%= note._id %>" onchange="this.form.submit()" />
+                        <label for="squaredTwo_<%= note._id %>"></label>
+                      </div>
+                      <label for="" class="ms-2"> <%= note.note %> </label>
                     </div>
-                    <label for="" class="ms-2"> <%= note.note %> </label>
-                  </div>
-                  <% i = 1+i %>
-                <% } %> 
+                  </form>
+                <% }) %>
               <% } %>              
           </div>
           <form action="/" method="post">
@@ -26,7 +27,7 @@
               <input
                 type="text"
                 class="w-100"
-                name="notes"
+                name="newItem"
                 id="notes"
                 placeholder="Add your notes"
               />

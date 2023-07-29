@@ -19,17 +19,17 @@ const date = new Date();
 const year = date.getFullYear();
 document.getElementById("year").innerHTML = year;
 
-const checkboxes = document.querySelectorAll(".checkbox");
+// const checkboxes = document.querySelectorAll(".checkbox");
 
-checkboxes.forEach((checkbox) => {
-checkbox.addEventListener("change", function () {
-  const label = this.parentElement.nextElementSibling;
-  if (this.checked) {
-      label.style.textDecoration = 'line-through';
-  } else {
-      label.style.textDecoration = 'none';
-  }
-});
-});
+// checkboxes.forEach((checkbox) => {
+// checkbox.addEventListener("change", function () {
+//   const label = this.parentElement.nextElementSibling;
+//   if (this.checked) {
+//       label.style.textDecoration = 'line-through';
+//   } else {
+//       label.style.textDecoration = 'none';
+//   }
+// });
+// });
 </script>
 </html>
